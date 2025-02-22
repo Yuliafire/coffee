@@ -1,0 +1,366 @@
+// -----------------------------------------------------------------------------
+// This file contains all styles related to the header of the site/application.
+// -----------------------------------------------------------------------------
+
+@use "../abstracts/variables" as *;
+@use "../abstracts/mixins" as *;
+
+@import url("https://fonts.googleapis.com/css2?family=Lora:wght@400;700&family=Open+Sans&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap");
+
+
+
+.body-wrapper {
+  overflow: hidden;
+  width: 100%;
+  position: relative;
+}
+
+
+.header {
+  max-width: $max-width;
+  width: 100%;
+  background-color: $background-color;
+  height: $header-height;
+  @include flex-center;
+  padding: $padding;
+  margin: 0 auto;
+
+  &__container {
+    @include flex-space-between;
+    width: 100%;
+    position: relative;
+  }
+
+  /* BURGER MENU STYLES */
+  &__burger-btn {
+    display: none;
+    position: absolute;
+    background-color: transparent;
+    width: 40px;
+    height: 40px;
+    right: 0px;
+    outline: none;
+    border: none;
+    cursor: pointer;
+  }
+
+  &__menu-link--main {
+    margin-top: -5px;
+  }
+
+  &__burger-line {
+    display: block;
+    position: absolute;
+    width: 20px;
+    height: 2px;
+    background-color: black;
+    left: 10px;
+  }
+
+  &__burger-line:nth-child(1) {
+    transform: translateY(4px);
+    transition: transform 0.3s ease;
+  }
+
+  &__burger-line:nth-child(2) {
+    transform: translateY(-4px);
+    transition: transform 0.3s ease;
+  }
+
+  &__nav {
+    display: flex;
+  }
+
+  &__menu-link--main {
+    @include flex-center;
+    flex-direction: row;
+    color: black;
+    gap: 10px;
+  }
+
+  &__menu-text {
+    color: black;
+  }
+
+  &__menu-img {
+    width: 30px;
+    height: 30px;
+  }
+
+  &__nav-list {
+    @include flex-center;
+    list-style-type: none;
+    gap: 5rem;
+    font-size: 1.4em;
+    word-wrap: none;
+
+    &:hover {
+      font-weight: bold;
+      cursor: pointer;
+    }
+  }
+
+  &__nav-link {
+    @include nav-link-style;
+
+    &::after {
+      content: " ";
+      position: absolute;
+      height: 2px;
+      background-color: #403f3d;
+      width: 0;
+      opacity: 0.3;
+      right: 50%;
+      bottom: -4px;
+      transition: all 0.8s ease;
+
+      &:hover::after {
+        right: 0;
+        width: 100%;
+        opacity: 1;
+      }
+    }
+  }
+}
+
+/* make a cross */
+.header.open .header__burger-line .header__burger-line:nth-child(1) {
+  transform: translateY(0) rotate(45deg);
+}
+
+.header.open .header__burger-line .header__burger-line:nth-child(2) {
+  transform: translateY(0) rotate(-45deg);
+}
+
+@media (min-width: 769px) and (max-width: 900px) {
+  .header {
+    max-width: 56.25rem;
+    width: 100%;
+    margin: 0 auto;
+
+    &__container {
+      align-items: center;
+    }
+
+    /* BURGER MENU STYLES */
+    &__burger-btn {
+      display: block;
+    }
+
+    &__menu-link--main {
+      display: none;
+    }
+
+    &__nav {
+      position: fixed;
+      visibility: hidden;
+      right: -100%;
+      top: 4rem;
+      z-index: 2000;
+      max-width: 56.25rem;
+      width: 100%;
+      background-color: #e1d4c9;
+      border: 1px solid #e1d4c9;
+      height: calc(100vh - 4rem);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      transition: transform 0.5s ease, visibility 0.5s ease;
+    }
+
+    &__nav-list {
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      gap: 36px;
+      margin: 0 auto;
+    }
+
+    &__nav-link {
+      font-style: normal;
+      font-weight: 600;
+      font-size: 1.5rem;
+      line-height: 125%;
+      color: #403f3d;
+      position: relative;
+    }
+
+    &__nav-link::after {
+      content: " ";
+      position: absolute;
+      height: 2px;
+      background-color: #403f3d;
+      width: 0;
+      opacity: 0.3;
+      right: 50%;
+      bottom: -4px;
+      transition: all 0.8s ease;
+    }
+
+    &__nav-link:hover::after {
+      right: 0;
+      width: 100%;
+      opacity: 1;
+    }
+
+    &__nav-link {
+      display: none;
+    }
+  }
+
+  body.menu-open {
+    overflow: hidden;
+    /* Отключает прокрутку страницы */
+  }
+
+  .header.open .header__nav {
+    display: flex;
+    visibility: visible;
+    transform: translateX(-100%);
+  }
+}
+
+@media (min-width: 381px) and (max-width: 768px) {
+  .header {
+    max-width: 48rem;
+    width: 100%;
+    margin: 0 auto;
+
+    &__container {
+      align-items: center;
+    }
+
+    &__burger-btn {
+      display: block;
+    }
+
+    &__menu-link--main {
+      display: none;
+    }
+
+    &__burger-line:nth-child(1) {
+      transform: translateY(4px);
+      transition: transform 0.3s ease;
+    }
+
+    &__burger-line:nth-child(2) {
+      transform: translateY(-4px);
+      transition: transform 0.3s ease;
+    }
+
+    &__menu-link--main {
+      display: none;
+    }
+
+    &__nav {
+      position: fixed;
+      visibility: hidden;
+      right: -100%;
+      top: 4rem;
+      z-index: 2000;
+      max-width: 48rem;
+      width: 100%;
+      background-color: #e1d4c9;
+      border: 1px solid #e1d4c9;
+      height: calc(100vh - 4rem);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      transition: transform 0.5s ease, visibility 0.5s ease;
+    }
+
+    &__nav-list {
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      gap: 36px;
+      margin: 0 auto;
+    }
+
+    &__nav-link {
+      font-style: normal;
+      font-weight: 600;
+      font-size: 1.5rem;
+      line-height: 125%;
+      color: #403f3d;
+    }
+
+    &__nav-link {
+      display: none;
+    }
+  }
+
+  .header.open .header__nav {
+    display: flex;
+    visibility: visible;
+    transform: translateX(-100%);
+  }
+
+  body.menu-open {
+    overflow: hidden;
+    /* Отключает прокрутку страницы */
+  }
+}
+
+@media (max-width: 380px) {
+  .header {
+    max-width: $max-width-small;
+    width: 100%;
+    height: 64px;
+    margin: 0 auto;
+
+    &__container {
+      align-items: center;
+    }
+
+    &__burger-btn {
+      display: block;
+    }
+
+    &__menu-link--main {
+      display: none;
+    }
+
+    &__nav {
+      position: fixed;
+      visibility: hidden;
+      right: -100%;
+      top: 4rem;
+      z-index: 2000;
+      max-width: $max-width-small;
+      width: 100%;
+      background-color: $color-text;
+      border: 1px solid $color-text;
+      height: calc(100vh - 4rem);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      transition: transform 0.5s ease, visibility 0.5s ease;
+    }
+
+    &__nav-list {
+      @include flex-column-center;
+      gap: 36px;
+      margin: 0 auto;
+    }
+
+    &__nav-link {
+      font-style: normal;
+      font-weight: 600;
+      font-size: 1.5rem;
+      line-height: 125%;
+      color: #403f3d;
+      display: none;
+    }
+  }
+
+  body.menu-open {
+    overflow: hidden;
+  }
+
+  .header.open .header__nav {
+    display: flex;
+    visibility: visible;
+    transform: translateX(-100%);
+  }
+}

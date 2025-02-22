@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script src="../../dist/bundle.js"></script>
+    <script src="../../src/burger.js"></script>
+
+<header class="header">
+    <div class="header__container">
+        <h1 class="header__logo">
+            <a href="./index.html" class="header__logo-link">
+                <img class="header__logo-img" src="../../assets/icon/logo.png" alt="Logo" />
+            </a>
+        </h1>
+
+        <nav class="header__nav" id="menu">
+            <ul class="header__nav-list" id="burger-menu">
+                <li class="header__nav-item">
+                    <a href="#slider" class="header__nav-link" id="fav-coffee-link">
+                        Favorite Coffee
+                    </a>
+                </li>
+                <li class="header__nav-item">
+                    <a href="#about" class="header__nav-link" id="about-link">
+                        About
+                    </a>
+                </li>
+                <li class="header__nav-item">
+                    <a href="#mobile-app" class="header__nav-link" id="mobile-app-link">
+                        Mobile App
+                    </a>
+                </li>
+                <li class="header__nav-item">
+                    <a href="#contact" class="header__nav-link" id="contact-link">
+                        Contact Us
+                    </a>
+                </li>
+            </ul>
+        </nav>
+        <button type="button" class="header__burger-btn" id="burger">
+            <span class="header__burger-line"></span>
+            <span class="header__burger-line"></span>
+        </button>
+
+        <a href="../menu/menu.html" class="header__menu-link header__menu-link--main" id="header-menu">
+            <p class="header__menu-text">Menu</p>
+            <img src="../../assets/icon/coffee-cup.png" class="header__menu-img" alt="coffe cup icon" />
+        </a>
+    </div>
+</header>
+</body>
+</html>
